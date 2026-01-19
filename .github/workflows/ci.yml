@@ -28,4 +28,4 @@ jobs:
               run: |
                   npx ng serve &
                   sleep 10
-                  curl -f http://localhost:4200 || exit 1
+                  curl -f http://localhost:4200/ || exit 1

@@ -2,46 +2,63 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Role } from './role';
+import { EnvironmentService } from './environment';
 
-export interface user {
-  id: number,
-  firstname: string,
-  lastname: string,
-  username: string,
-  email: string,
-  password: string,
-  role_id: Role,
-  create_at: Date,
-  updated_at: Date
+export interface User {
+  id: string;
+  firstname: string;
+  lastname: string;
+  username: string;
+  email: string;
+  password?: string;
+  role: Role;
+  created_at: Date;
+  updated_at: Date;
+}
 
+export interface UpdateUserRequest {
+  firstName?: string;
+  lastName?: string;
+  username?: string;
+  email?: string;
+}
+
+export interface CreateUserRequest {
+  firstname: string;
+  lastname: string;
+  username: string;
+  email: string;
+  password: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 
-export class User {
-  private apiUrl = "./api/users"
+export class UserService {
+  private readonly baseUrl: string;
 
-  constructor(private http: HttpClient) {}
-
-  getAllUsers(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/user`);
+  constructor(private http: HttpClient, private env: EnvironmentService) {
+    this.baseUrl = this.env.apiUrl;
   }
 
-  getUserById(id: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/user/${id}`);
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}/api/user`);
   }
 
-  createUser(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/user`, user);
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/api/user/${id}`);
   }
 
-  updateUser(id: string, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/user/${id}`, data);
+  createUser(user: CreateUserRequest): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/api/user`, user);
   }
 
-  deleteUser(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/user/${id}`);
+  updateUser(id: string, data: UpdateUserRequest): Observable<User> {
+    return this.http.put<User>(`${this.baseUrl}/api/user/${id}`, data);
+  }
+
+  deleteUser(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/api/user/${id}`);
   }
 }

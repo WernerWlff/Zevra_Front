@@ -16,35 +16,35 @@ export class ApiService {
     this.baseUrl = this.env.apiUrl;
   }
 
-  login(email:string, password:string): Observable<any> {
+  login(email:string, password:string): Observable<unknown> {
     return this.http.post(`${this.baseUrl}/login`, { email, password });
   }
 
-  register(data: any): Observable<any> {
+  register(data: unknown): Observable<unknown> {
     return this.http.post(`${this.baseUrl}/register`, data);
   }
 
-  updatePassword(data: any): Observable<any> {
+  updatePassword(data: unknown): Observable<unknown> {
     return this.http.put(`${this.baseUrl}/password`, data);
   }
 
-  getAllUsers(): Observable<any> {
+  getAllUsers(): Observable<unknown> {
     return this.http.get(`${this.baseUrl}/user`);
   }
 
-  getUserById(id: string): Observable<any> {
+  getUserById(id: string): Observable<unknown> {
     return this.http.get(`${this.baseUrl}/user/${id}`);
   }
 
-  createUser(user: any): Observable<any> {
+  createUser(user: unknown): Observable<unknown> {
     return this.http.post(`${this.baseUrl}/user`, user);
   }
 
-  updateUser(id: string, data: any): Observable<any> {
+  updateUser(id: string, data: unknown): Observable<unknown> {
     return this.http.put(`${this.baseUrl}/user/${id}`, data);
   }
 
-  deleteUser(id: string): Observable<any> {
+  deleteUser(id: string): Observable<unknown> {
     return this.http.delete(`${this.baseUrl}/user/${id}`);
   }
 }

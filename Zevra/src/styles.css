@@ -1,3 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import "tailwindcss";
+
+:root {
+  --color-taupe: #85756E;
+  --color-ghost-white: #F6F8FF;
+  --color-black: #020202;
+  --color-black-forest: #023618;
+  --color-seaweed: #00B295;
+
+  --primary: var(--color-seaweed);
+  --secondary: var(--color-black-forest);
+  --accent: var(--color-taupe);
+  --background: var(--color-ghost-white);
+  --text: var(--color-black);
+  --text-dark: var(--color-black-forest);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+.bg-taupe {
+  background-color: var(--color-taupe);
+}
+
+.bg-ghost-white {
+  background-color: var(--color-ghost-white);
+}
+
+.bg-black {
+  background-color: var(--color-black);
+}
+
+.bg-black-forest {
+  background-color: var(--color-black-forest);
+}
+
+.bg-seaweed {
+  background-color: var(--color-seaweed);
+}
+
+.text-taupe {
+  color: var(--color-taupe);
+}
+
+.text-ghost-white {
+  color: var(--color-ghost-white);
+}
+
+.text-black {
+  color: var(--color-black);
+}
+
+.text-black-forest {
+  color: var(--color-black-forest);
+}
+
+.text-seaweed {
+  color: var(--color-seaweed);
+}

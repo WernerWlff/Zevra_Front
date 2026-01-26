@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLink, Router } from '@angular/router';
+import { AuthService } from './services/auth';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,17 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 export class App {
   protected readonly title = signal('Zevra');
   isMenuOpen = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  get isLoggedIn(): boolean {
+    return this.authService.getToken() !== null;
+  }
+
+  logout(): void {
+    this.authService.clearSession();
+    this.router.navigate(['/']);
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

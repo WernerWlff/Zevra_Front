@@ -47,11 +47,11 @@ export class AuthService {
   }
 
   register(data: RegisterRequest): Observable<RegisterResponse> {
-    return this.http.post<RegisterResponse>(`${this.baseUrl}/api/register`, data);
+    return this.http.post<RegisterResponse>(`${this.baseUrl}/register`, data);
   }
 
   login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.baseUrl}/api/login`, { email, password });
+    return this.http.post<LoginResponse>(`${this.baseUrl}/login`, { email, password });
   }
 
   //todo : updatePassword

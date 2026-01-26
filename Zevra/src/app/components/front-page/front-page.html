@@ -10,33 +10,49 @@
       <div class="sm:grid grid-cols-1 space-y-2 md:grid-cols-3 gap-4">
         <div class="space-y-2">
           <label for="muscleSelect" class="block md:hidden search-label">Muscle</label>
-          <select id="muscleSelect" [(ngModel)]="selectedMuscleId" class="search-input">
+          <select
+            id="muscleSelect"
+            [(ngModel)]="selectedMuscleId"
+            class="search-input"
+          >
             <option [ngValue]="null">Tous les muscles</option>
             @for (m of muscles(); track m.id) {
-            <option [ngValue]="m.id">{{ m.muscleTargeted }}</option>
+              <option [ngValue]="m.id">{{ m.muscleTargeted }}</option>
             }
           </select>
         </div>
 
         <div class="space-y-2">
           <label for="typeSelect" class="block md:hidden search-label">Type d'exercice</label>
-          <select id="typeSelect" [(ngModel)]="selectedTypeId" class="search-input">
+          <select
+            id="typeSelect"
+            [(ngModel)]="selectedTypeId"
+            class="search-input"
+          >
             <option [ngValue]="null">Tous les types</option>
             @for (t of types(); track t.id) {
-            <option [ngValue]="t.id">{{ t.category }}</option>
+              <option [ngValue]="t.id">{{ t.category }}</option>
             }
           </select>
         </div>
 
         <div class="flex items-end">
-          <button type="button" (click)="onSearch()" class="search-button">
+          <button
+            type="button"
+            (click)="onSearch()"
+            class="search-button"
+          >
             Rechercher 🔎
           </button>
         </div>
 
         <div class="mt-3 flex items-center justify-between col-span-3">
           <p id="resultCount" class="result-count">{{ resultMessage }}</p>
-          <button type="button" (click)="onResetFilters()" class="reset-link">
+          <button
+            type="button"
+            (click)="onResetFilters()"
+            class="reset-link"
+          >
             Réinitialiser les filtres
           </button>
         </div>

@@ -1,0 +1,101 @@
+.search-section {
+    background-color: var(--color-ghost-white);
+    padding: 1.5rem 0 3rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .search-section {
+      padding: 3rem 0 4rem;
+    }
+  }
+  
+  .search-wrapper {
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .search-wrapper { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+  
+  @media (min-width: 1024px) {
+    .search-wrapper { padding-left: 2rem; padding-right: 2rem; }
+  }
+  
+  .search-card {
+    background-color: white;
+    border: none;
+    box-shadow: 0 10px 15px -3px rgba(2, 54, 24, 0.08), 0 4px 6px -2px rgba(2, 54, 24, 0.04);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .search-card { padding: 2rem; }
+  }
+  
+  .search-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-black-forest);
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-taupe);
+    border-radius: 0.5rem;
+    background-color: white;
+    color: var(--color-black);
+    font-size: 1rem;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: var(--color-seaweed);
+    box-shadow: 0 0 0 2px rgba(0, 178, 149, 0.25);
+  }
+  
+  .search-button {
+    width: 100%;
+    height: 2.5rem;
+    background-color: var(--color-black-forest);
+    color: var(--color-ghost-white);
+    border: none;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .search-button:hover {
+    background-color: var(--color-black);
+  }
+  
+  .search-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-seaweed);
+  }
+  
+  .result-count {
+    font-size: 0.875rem;
+    color: var(--color-taupe);
+    margin-left: 1.25rem;
+  }
+  
+  .reset-link {
+    font-size: 0.875rem;
+    color: var(--color-seaweed);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+  }
+  
+  .reset-link:hover {
+    color: var(--color-black-forest);
+  }

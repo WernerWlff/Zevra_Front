@@ -47,22 +47,22 @@ export class ExerciceService {
   }
 
   getAllExercices(): Observable<Exercice[]> {
-    return this.http.get<Exercice[]>(`${this.baseUrl}/api/exercices`);
+    return this.http.get<Exercice[]>(`${this.baseUrl}/exercices`);
   }
 
   getExerciceById(id: number): Observable<Exercice> {
-    return this.http.get<Exercice>(`${this.baseUrl}/api/exercices/${id}`);
+    return this.http.get<Exercice>(`${this.baseUrl}/exercices/${id}`);
   }
 
   createExercice(request: CreateExerciceRequest): Observable<Exercice> {
-    return this.http.post<Exercice>(`${this.baseUrl}/api/exercices`, request);
+    return this.http.post<Exercice>(`${this.baseUrl}/exercices`, request);
   }
 
   updateExercice(id: number, request: UpdateExerciceRequest): Observable<Exercice> {
-    return this.http.put<Exercice>(`${this.baseUrl}/api/exercices/${id}`, request);
+    return this.http.put<Exercice>(`${this.baseUrl}/exercices/${id}`, request);
   }
 
   deleteExercice(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/api/exercices/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/exercices/${id}`);
   }
 }

@@ -1,1 +1,52 @@
-<p>register works!</p>
+<section class="register-section">
+    <div class="register-wrapper">
+        <div class="register-card">
+            <h2 class="register-title">Créer un compte</h2>
+            <p class="register-subtitle">Rejoignez Zevra pour suivre vos entraînements.</p>
+
+            <form (ngSubmit)="onSubmit()" class="register-form">
+                <div class="register-grid">
+                    <div class="register-field">
+                        <label for="firstname" class="register-label">Prénom</label>
+                        <input id="firstname" type="text" [(ngModel)]="firstname" name="firstname"
+                            class="register-input" placeholder="Prénom" required />
+                    </div>
+                    <div class="register-field">
+                        <label for="lastname" class="register-label">Nom</label>
+                        <input id="lastname" type="text" [(ngModel)]="lastname" name="lastname" class="register-input"
+                            placeholder="Nom" required />
+                    </div>
+                </div>
+
+                <div class="register-field">
+                    <label for="username" class="register-label">Nom d'utilisateur</label>
+                    <input id="username" type="text" [(ngModel)]="username" name="username" class="register-input"
+                        placeholder="Nom d'utilisateur" required />
+                </div>
+
+                <div class="register-field">
+                    <label for="email" class="register-label">Email</label>
+                    <input id="email" type="email" [(ngModel)]="email" name="email" class="register-input"
+                        placeholder="email@exemple.com" required />
+                </div>
+
+                <div class="register-field">
+                    <label for="password" class="register-label">Mot de passe</label>
+                    <input id="password" type="password" [(ngModel)]="password" name="password" class="register-input"
+                        placeholder="••••••••" required />
+                </div>
+
+                @if (errorMessage) {
+                <p class="register-error">{{ errorMessage }}</p>
+                }
+
+                <div class="register-actions">
+                    <button type="submit" class="register-button" [disabled]="isSubmitting">
+                        {{ isSubmitting ? 'Inscription...' : 'S\'inscrire' }}
+                    </button>
+                    <a routerLink="/login" class="register-link">Déjà un compte ? Se connecter</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

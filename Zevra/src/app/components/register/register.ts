@@ -34,7 +34,6 @@ export class Register {
       password: this.password
     };
 
-    // TODO : finish the login component to redirect the user after creating an account
     this.authService.register(data).subscribe({
       next: () => {
         this.isSubmitting = false;

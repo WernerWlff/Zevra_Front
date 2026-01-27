@@ -1,0 +1,226 @@
+.exercices-section {
+    background-color: var(--color-ghost-white);
+    padding: 1.5rem 0 3rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .exercices-section {
+      padding: 3rem 0 4rem;
+    }
+  }
+  
+  .exercices-wrapper {
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .exercices-wrapper {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .exercices-wrapper {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  .exercices-filter-card {
+    background-color: white;
+    border: none;
+    box-shadow: 0 10px 15px -3px rgba(2, 54, 24, 0.08), 0 4px 6px -2px rgba(2, 54, 24, 0.04);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .exercices-filter-card {
+      padding: 2rem;
+    }
+  }
+  
+  .exercices-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-black-forest);
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .exercices-subtitle {
+    font-size: 0.875rem;
+    color: var(--color-taupe);
+    margin: 0 0 1.5rem 0;
+  }
+  
+  .exercices-filter-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .exercices-filter-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .exercices-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .exercices-field-button {
+    justify-content: flex-end;
+  }
+  
+  @media (min-width: 768px) {
+    .exercices-field-button {
+      justify-content: flex-end;
+    }
+  }
+  
+  .exercices-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-black-forest);
+  }
+  
+  .exercices-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-taupe);
+    border-radius: 0.5rem;
+    background-color: white;
+    color: var(--color-black);
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .exercices-input:focus {
+    outline: none;
+    border-color: var(--color-seaweed);
+    box-shadow: 0 0 0 2px rgba(0, 178, 149, 0.25);
+  }
+  
+  .exercices-input::placeholder {
+    color: var(--color-taupe);
+    opacity: 0.7;
+  }
+  
+  .exercices-button {
+    width: 100%;
+    height: 2.5rem;
+    background-color: var(--color-black-forest);
+    color: var(--color-ghost-white);
+    border: none;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .exercices-button:hover {
+    background-color: var(--color-black);
+  }
+  
+  .exercices-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-seaweed);
+  }
+  
+  .exercices-filter-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(2, 54, 24, 0.08);
+  }
+  
+  .exercices-result-count {
+    font-size: 0.875rem;
+    color: var(--color-taupe);
+    margin: 0;
+  }
+  
+  .exercices-reset {
+    font-size: 0.875rem;
+    color: var(--color-seaweed);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+  }
+  
+  .exercices-reset:hover {
+    color: var(--color-black-forest);
+  }
+  
+  .exercices-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .exercices-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .exercices-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .exercices-card {
+    background-color: white;
+    border: none;
+    box-shadow: 0 10px 15px -3px rgba(2, 54, 24, 0.08), 0 4px 6px -2px rgba(2, 54, 24, 0.04);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    transition: box-shadow 0.2s;
+  }
+  
+  .exercices-card:hover {
+    box-shadow: 0 12px 20px -4px rgba(2, 54, 24, 0.12), 0 6px 8px -2px rgba(2, 54, 24, 0.06);
+  }
+  
+  .exercices-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-black-forest);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
+  }
+  
+  .exercices-card-meta {
+    font-size: 0.875rem;
+    color: var(--color-taupe);
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 1rem;
+  }
+  
+  .exercices-card-meta dt {
+    font-weight: 500;
+    color: var(--color-black-forest);
+  }
+  
+  .exercices-card-meta dd {
+    margin: 0;
+  }

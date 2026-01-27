@@ -21,6 +21,17 @@ export interface AddExerciceToFavoriteRequest {
   description?: string;
 }
 
+export interface FavoriteResponse {
+  id: number;
+  exerciceId: number;
+  name: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  exerciceType?: string;
+  exerciceMuscle?: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -33,26 +44,26 @@ export class FavoriteService {
   }
 
   getAllFavorites(): Observable<Favorite[]> {
-    return this.http.get<Favorite[]>(`${this.baseUrl}/api/favorites`);
+    return this.http.get<Favorite[]>(`${this.baseUrl}/favorites`);
   }
 
   getFavoriteById(id: number): Observable<Favorite> {
-    return this.http.get<Favorite>(`${this.baseUrl}/api/favorites/${id}`);
+    return this.http.get<Favorite>(`${this.baseUrl}/favorites/${id}`);
   }
 
-  getFavoritesByUser(userId: string): Observable<Favorite[]> {
-    return this.http.get<Favorite[]>(`${this.baseUrl}/api/favorites/user/${userId}`);
+  getFavoritesByUser(userId: string): Observable<FavoriteResponse[]> {
+    return this.http.get<FavoriteResponse[]>(`${this.baseUrl}/favorites/user/${userId}`);
   }
 
   addExerciceToFavorite(userId: string, request: AddExerciceToFavoriteRequest): Observable<Favorite> {
-    return this.http.post<Favorite>(`${this.baseUrl}/api/favorites/user/${userId}/exercices`, request);
+    return this.http.post<Favorite>(`${this.baseUrl}/favorites/user/${userId}/exercices`, request);
   }
 
   deleteFavorite(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/api/favorites/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/favorites/${id}`);
   }
 
   removeExerciceFromFavorite(userId: string, exerciceId: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/api/favorites/user/${userId}/exercice/${exerciceId}`);
+    return this.http.delete<void>(`${this.baseUrl}/favorites/user/${userId}/exercice/${exerciceId}`);
   }
 }

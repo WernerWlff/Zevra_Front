@@ -1,0 +1,49 @@
+<section class="favoris-section">
+    <div class="favoris-wrapper">
+      <div class="favoris-header">
+        <h1 class="favoris-title">Mes favoris</h1>
+        <p class="favoris-subtitle">Exercices que vous avez mis de côté.</p>
+        <a routerLink="/exercices" class="favoris-back">← Retour aux exercices</a>
+      </div>
+  
+      @if (loading) {
+        <p class="favoris-loading">Chargement…</p>
+      } @else if (favorites().length === 0) {
+        <div class="favoris-empty">
+          <p>Aucun favori. <a routerLink="/exercices">Parcourir les exercices</a> pour en ajouter.</p>
+        </div>
+      } @else {
+        <div class="favoris-grid">
+          @for (f of favorites(); track f.id) {
+            <div class="favoris-card">
+              <h3 class="favoris-card-title">{{ f.name }}</h3>
+              @if (f.exerciceType || f.exerciceMuscle) {
+                <p class="favoris-card-meta">{{ f.exerciceType }} – {{ f.exerciceMuscle }}</p>
+              }
+              @if (f.description) {
+                <p class="favoris-card-desc">{{ f.description }}</p>
+              }
+              <div class="favoris-card-actions">
+                <a [routerLink]="['/exercices']" class="favoris-link">Voir les exercices</a>
+                <button
+                  type="button"
+                  (click)="removeFavorite(f)"
+                  [disabled]="removingId === f.id"
+                  class="favoris-remove"
+                >
+                  {{ removingId === f.id ? '…' : 'Retirer' }}
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+  
+      @if (message) {
+        <p class="favoris-msg favoris-msg-success">{{ message }}</p>
+      }
+      @if (error) {
+        <p class="favoris-msg favoris-msg-error">{{ error }}</p>
+      }
+    </div>
+  </section>

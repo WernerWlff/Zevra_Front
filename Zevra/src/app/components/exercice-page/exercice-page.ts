@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { MuscleService, Muscle } from '../../services/muscle';
 import { TypeService, Type } from '../../services/type';
 import { ExerciceService, Exercice } from '../../services/exercice';
+import { AuthService } from '../../services/auth';
+import { FavoriteService, AddExerciceToFavoriteRequest } from '../../services/favorite';
 
 @Component({
   selector: 'app-exercice-page',
@@ -26,7 +28,17 @@ export class ExercicesPage implements OnInit {
     private muscleService: MuscleService,
     private typeService: TypeService,
     private exerciceService: ExerciceService,
-  ) { }
+    private authService: AuthService,
+    private favoriteService: FavoriteService,
+  ) {}
+
+  get isLoggedIn(): boolean {
+    return this.authService.getToken() != null;
+  }
+  
+  favoriteMessage = '';
+  favoriteError = '';
+  addingFavoriteId: number | null = null;
 
   ngOnInit(): void {
     this.loadMuscles();
@@ -91,7 +103,7 @@ export class ExercicesPage implements OnInit {
     const n = this.filteredExercices().length;
     this.resultMessage = n === 0
       ? 'Aucun exercice trouvé.'
-      : `${n} exercices${n > 1 ? 's' : ''} trouvé${n > 1 ? 's' : ''}.`;
+      : `${n} exercice${n > 1 ? 's' : ''} trouvé${n > 1 ? 's' : ''}.`;
   }
 
   onSearch(): void {
@@ -117,5 +129,34 @@ export class ExercicesPage implements OnInit {
     const s = sec % 60;
     return s > 0 ? `${m} min ${s} s` : `${m} min`;
 
+  }
+
+  addToFavorites(exercice: Exercice): void {
+    this.favoriteMessage = '';
+    this.favoriteError = '';
+    const user = this.authService.getUser();
+    if (!user?.id) {
+      this.favoriteError = 'Connectez-vous pour ajouter des favoris.';
+      return;
+    }
+    this.addingFavoriteId = exercice.id;
+    const name = `${exercice.type.category} - ${exercice.muscle.muscleTargeted}`;
+    const request: AddExerciceToFavoriteRequest = {
+      exercice_id: exercice.id,
+      name,
+      description: '',
+    };
+    this.favoriteService.addExerciceToFavorite(user.id, request).subscribe({
+      next: () => {
+        this.addingFavoriteId = null;
+        this.favoriteMessage = 'Ajouté aux favoris.';
+        setTimeout(() => (this.favoriteMessage = ''), 3000);
+      },
+      error: (err) => {
+        this.addingFavoriteId = null;
+        this.favoriteError = err.error?.message ?? err.error ?? 'Erreur lors de l\'ajout aux favoris.';
+        setTimeout(() => (this.favoriteError = ''), 4000);
+      },
+    });
   }
 }

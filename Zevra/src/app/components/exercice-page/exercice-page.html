@@ -1,0 +1,71 @@
+<section class="exercices-section">
+    <div class="exercices-wrapper">
+        <div class="exercices-filter-card">
+            <h2 class="exercices-title">Exercices</h2>
+            <p class="exercices-subtitle">Filtrez par muscle, type ou recherche.</p>
+
+            <div class="exercices-filter-grid">
+                <div class="exercices-field">
+                    <label for="muscleSelect" class="exercices-label">Muscle</label>
+                    <select id="muscleSelect" [(ngModel)]="selectedMuscleId" class="exercices-input">
+                        <option [ngValue]="null">Tous les muscles</option>
+                        @for (m of muscles(); track m.id) {
+                        <option [ngValue]="m.id">{{ m.muscleTargeted }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="exercices-field">
+                    <label for="typeSelect" class="exercices-label">Type d'exercice</label>
+                    <select id="typeSelect" [(ngModel)]="selectedTypeId" class="exercices-input">
+                        <option [ngValue]="null">Tous les types</option>
+                        @for (t of types(); track t.id) {
+                        <option [ngValue]="t.id">{{ t.category }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="exercices-field">
+                    <label for="searchInput" class="exercices-label">Recherche</label>
+                    <input id="searchInput" type="text" [(ngModel)]="searchQuery" class="exercices-input"
+                        placeholder="Ex. pectoraux, cardio…" />
+                </div>
+
+                <div class="exercices-field exercices-field-button">
+                    <button type="button" (click)="onSearch()" class="exercices-button">
+                        Rechercher
+                    </button>
+                </div>
+            </div>
+
+            <div class="exercices-filter-footer">
+                <p class="exercices-result-count">{{ resultMessage }}</p>
+                <button type="button" (click)="onResetFilters()" class="exercices-reset">
+                    Réinitialiser les filtres
+                </button>
+            </div>
+        </div>
+
+        <div class="exercices-grid">
+            @for (e of filteredExercices(); track e.id) {
+            <div class="exercices-card">
+                <h3 class="exercices-card-title">
+                    {{ e.type.category }} – {{ e.muscle.muscleTargeted }}
+                </h3>
+                <dl class="exercices-card-meta">
+                    <dt>Durée</dt>
+                    <dd>{{ formatDuration(e.duration) }}</dd>
+                    @if (e.beginner_rep != null || e.intermediate_rep != null || e.hard_rep != null) {
+                    <dt>Répétitions</dt>
+                    <dd>
+                        Débutant {{ e.beginner_rep }} /
+                        Intermédiaire {{ e.intermediate_rep }} /
+                        Avancé {{ e.hard_rep }}
+                    </dd>
+                    }
+                </dl>
+            </div>
+            }
+        </div>
+    </div>
+</section>

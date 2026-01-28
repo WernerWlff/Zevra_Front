@@ -34,43 +34,43 @@ export class TrainingListService {
   }
 
   getAllTrainingLists(): Observable<TrainingList[]> {
-    return this.http.get<TrainingList[]>(`${this.baseUrl}/api/training-lists`);
+    return this.http.get<TrainingList[]>(`${this.baseUrl}/training-lists`);
   }
 
   getTrainingListById(id: number): Observable<TrainingList> {
-    return this.http.get<TrainingList>(`${this.baseUrl}/api/training-lists/${id}`);
+    return this.http.get<TrainingList>(`${this.baseUrl}/training-lists/${id}`);
   }
 
   getTrainingListsByUser(userId: string): Observable<TrainingList[]> {
-    return this.http.get<TrainingList[]>(`${this.baseUrl}/api/training-lists/user/${userId}`);
+    return this.http.get<TrainingList[]>(`${this.baseUrl}/training-lists/user/${userId}`);
   }
 
   getListNamesByUser(userId: string): Observable<string[]> {
-    return this.http.get<string[]>(`${this.baseUrl}/api/training-lists/user/${userId}/names`);
+    return this.http.get<string[]>(`${this.baseUrl}/training-lists/user/${userId}/names`);
   }
 
   getExercicesByListName(userId: string, listName: string): Observable<TrainingList[]> {
-    return this.http.get<TrainingList[]>(`${this.baseUrl}/api/training-lists/user/${userId}/list/${listName}`);
+    return this.http.get<TrainingList[]>(`${this.baseUrl}/training-lists/user/${userId}/list/${listName}`);
   }
 
   addExerciceToTrainingList(userId: string, request: AddExerciceToTrainingListRequest): Observable<TrainingList> {
-    return this.http.post<TrainingList>(`${this.baseUrl}/api/training-lists/user/${userId}/exercices`, request);
+    return this.http.post<TrainingList>(`${this.baseUrl}/training-lists/user/${userId}/exercices`, request);
   }
 
   updateTrainingList(id: number, trainingList: TrainingList): Observable<TrainingList> {
-    return this.http.put<TrainingList>(`${this.baseUrl}/api/training-lists/${id}`, trainingList);
+    return this.http.put<TrainingList>(`${this.baseUrl}/training-lists/${id}`, trainingList);
   }
 
   deleteTrainingList(id: number): Observable<{ message : string }> {
-    return this.http.delete<{ message : string }>(`${this.baseUrl}/api/training-lists/${id}`);
+    return this.http.delete<{ message : string }>(`${this.baseUrl}/training-lists/${id}`);
   }
   
   removeExerciceFromList(userId: string, listName: string, exerciceId: number): Observable<{ message : string }> {
-    return this.http.delete<{ message : string }>(`${this.baseUrl}/api/training-lists/user/${userId}/list/${listName}/exercice/${exerciceId}`);
+    return this.http.delete<{ message : string }>(`${this.baseUrl}/training-lists/user/${userId}/list/${listName}/exercice/${exerciceId}`);
   }
 
   deleteEntireList(userId: string, listName: string): Observable<{ message : string }> {
-    return this.http.delete<{ message : string }>(`${this.baseUrl}/api/training-lists/user/${userId}/list/${listName}`);
+    return this.http.delete<{ message : string }>(`${this.baseUrl}/training-lists/user/${userId}/list/${listName}`);
   }
 
 

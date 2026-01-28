@@ -83,5 +83,12 @@ export class AuthService {
     localStorage.removeItem(USER_KEY);
   }
 
+  updateStoredUser(data: { firstname: string; lastname: string; username: string; email: string }): void {
+    const user = this.getUser();
+    if (!user) return;
+    const updated = { ...user, ...data };
+    localStorage.setItem(USER_KEY, JSON.stringify(updated));
+  }
+
   //todo : updatePassword
 }

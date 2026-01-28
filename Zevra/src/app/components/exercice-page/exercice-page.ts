@@ -75,6 +75,9 @@ export class ExercicesPage implements OnInit {
   }
 
   private getExerciceLabel(exercice: Exercice): string {
+    if (exercice.name?.trim()) {
+      return exercice.name.trim().toLowerCase();
+    }
     const typeName = exercice.type?.category ?? '';
     const muscleName = exercice.muscle?.muscleTargeted ?? '';
     return `${typeName} ${muscleName}`.trim().toLowerCase();
@@ -140,7 +143,7 @@ export class ExercicesPage implements OnInit {
       return;
     }
     this.addingFavoriteId = exercice.id;
-    const name = `${exercice.type.category} - ${exercice.muscle.muscleTargeted}`;
+    const name = exercice.name?.trim() || `${exercice.type?.category ?? ''} - ${exercice.muscle?.muscleTargeted ?? ''}`.trim();
     const request: AddExerciceToFavoriteRequest = {
       exercice_id: exercice.id,
       name,

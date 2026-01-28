@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 export interface Exercice {
   id: number;
+  name: string;
   type: Type;
   muscle: Muscle;
   duration: string;
@@ -15,10 +16,10 @@ export interface Exercice {
   hard_rep: number;
   created_at: Date;
   updated_at: Date;
-
 }
 
 export interface CreateExerciceRequest {
+  name: string;
   type_id: number;
   muscle_id: number;
   duration: string;
@@ -28,6 +29,7 @@ export interface CreateExerciceRequest {
 }
 
 export interface UpdateExerciceRequest {
+  name?: string;
   type_id?: number;
   muscle_id?: number;
   duration?: string;

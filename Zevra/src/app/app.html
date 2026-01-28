@@ -18,6 +18,9 @@
       <li><a routerLink="/exercices" class="nav-link">Exercices</a></li>
       <li><a routerLink="/entrainements" class="nav-link">Entraînements</a></li>
       <li><a routerLink="/profil" class="nav-link">Profil</a></li>
+      @if (isLoggedIn) {
+      <li><a routerLink="/favorites" class="nav-link">Favoris</a></li>
+      }
       <li>
         @if (isLoggedIn) {
         <button type="button" (click)="logout()" class="nav-link nav-link-button">Déconnexion</button>
@@ -52,6 +55,9 @@
           <li><a routerLink="/exercices" class="footer-link">Exercices</a></li>
           <li><a routerLink="/entrainements" class="footer-link">Entraînements</a></li>
           <li><a routerLink="/profil" class="footer-link">Profil</a></li>
+          @if (isLoggedIn) {
+          <li><a routerLink="/favorites" class="footer-link">Favoris</a></li>
+          }
         </ul>
       </div>
 

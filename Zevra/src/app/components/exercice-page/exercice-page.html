@@ -46,6 +46,13 @@
             </div>
         </div>
 
+        @if (favoriteMessage) {
+        <p class="exercices-fav-msg exercices-fav-msg-success">{{ favoriteMessage }}</p>
+        }
+        @if (favoriteError) {
+        <p class="exercices-fav-msg exercices-fav-msg-error">{{ favoriteError }}</p>
+        }
+
         <div class="exercices-grid">
             @for (e of filteredExercices(); track e.id) {
             <div class="exercices-card">
@@ -64,6 +71,14 @@
                     </dd>
                     }
                 </dl>
+                @if (isLoggedIn) {
+                <div class="exercices-card-actions">
+                    <button type="button" (click)="addToFavorites(e)" [disabled]="addingFavoriteId === e.id"
+                        class="exercices-fav-btn">
+                        {{ addingFavoriteId === e.id ? 'Ajout…' : '♥ Ajouter aux favoris' }}
+                    </button>
+                </div>
+                }
             </div>
             }
         </div>

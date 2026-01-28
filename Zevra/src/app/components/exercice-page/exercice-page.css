@@ -224,3 +224,49 @@
   .exercices-card-meta dd {
     margin: 0;
   }
+
+  .exercices-card-actions {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(2, 54, 24, 0.08);
+  }
+  
+  .exercices-fav-btn {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-seaweed);
+    background: transparent;
+    border: 1px solid var(--color-seaweed);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .exercices-fav-btn:hover:not(:disabled) {
+    background-color: var(--color-seaweed);
+    color: white;
+  }
+  
+  .exercices-fav-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .exercices-fav-msg {
+    font-size: 0.875rem;
+    margin: 0.5rem 0 0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+  }
+  
+  .exercices-fav-msg-success {
+    color: #166534;
+    background-color: #dcfce7;
+  }
+  
+  .exercices-fav-msg-error {
+    color: #b91c1c;
+    background-color: #fee2e2;
+  }

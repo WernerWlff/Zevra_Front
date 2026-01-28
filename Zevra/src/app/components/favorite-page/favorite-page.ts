@@ -13,7 +13,7 @@ import { FavoriteService, FavoriteResponse } from '../../services/favorite';
 })
 export class FavoritePage implements OnInit {
   favorites = signal<FavoriteResponse[]>([]);
-  loading = true;
+  loading = signal(true);
   removingId: number | null = null;
   message = '';
   error = '';
@@ -34,15 +34,15 @@ export class FavoritePage implements OnInit {
   }
 
   private loadFavorites(userId: string): void {
-    this.loading = true;
+    this.loading.set(true);
     this.favoriteService.getFavoritesByUser(userId).subscribe({
       next: (list) => {
         this.favorites.set(list);
-        this.loading = false;
+        this.loading.set(false);
       },
       error: () => {
         this.favorites.set([]);
-        this.loading = false;
+        this.loading.set(false);
         this.error = 'Impossible de charger les favoris.';
       },
     });

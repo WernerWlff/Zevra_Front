@@ -133,6 +133,10 @@
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
   }
+
+  .favoris-msg-top {
+    margin: 0 0 1rem 0;
+  }
   
   .favoris-msg-success { color: #166534; background: #dcfce7; }
   .favoris-msg-error { color: #b91c1c; background: #fee2e2; }

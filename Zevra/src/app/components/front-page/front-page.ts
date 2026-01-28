@@ -84,8 +84,10 @@ export class FrontPage implements OnInit {
   }
 
   onSearch(): void {
-    this.applyFilters();
-    // todo : redirect user to the exercice page 
+    const queryParams: { muscleId?: number; typeId?: number } = {};
+    if (this.selectedMuscleId != null) queryParams['muscleId'] = this.selectedMuscleId;
+    if (this.selectedTypeId != null) queryParams['typeId'] = this.selectedTypeId;
+    this.router.navigate(['/exercices'], { queryParams });
   }
 
   onResetFilters(): void {

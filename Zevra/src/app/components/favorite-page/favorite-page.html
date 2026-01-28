@@ -5,8 +5,15 @@
         <p class="favoris-subtitle">Exercices que vous avez mis de côté.</p>
         <a routerLink="/exercices" class="favoris-back">← Retour aux exercices</a>
       </div>
+
+      @if (message) {
+        <p class="favoris-msg favoris-msg-success favoris-msg-top">{{ message }}</p>
+      }
+      @if (error) {
+        <p class="favoris-msg favoris-msg-error favoris-msg-top">{{ error }}</p>
+      }
   
-      @if (loading) {
+      @if (loading()) {
         <p class="favoris-loading">Chargement…</p>
       } @else if (favorites().length === 0) {
         <div class="favoris-empty">
@@ -37,13 +44,6 @@
             </div>
           }
         </div>
-      }
-  
-      @if (message) {
-        <p class="favoris-msg favoris-msg-success">{{ message }}</p>
-      }
-      @if (error) {
-        <p class="favoris-msg favoris-msg-error">{{ error }}</p>
       }
     </div>
   </section>

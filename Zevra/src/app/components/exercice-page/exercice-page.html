@@ -53,11 +53,14 @@
         <p class="exercices-fav-msg exercices-fav-msg-error">{{ favoriteError }}</p>
         }
 
+        @if (loadingExercices()) {
+        <p class="exercices-loading">Chargement des exercices…</p>
+        } @else {
         <div class="exercices-grid">
             @for (e of filteredExercices(); track e.id) {
             <div class="exercices-card">
                 <h3 class="exercices-card-title">{{ e.name }}</h3>
-                <p class="exercices-card-subtitle">{{ e.type?.category }} - {{ e.muscle?.muscleTargeted }}</p>
+                <p class="exercices-card-subtitle">{{ e.type.category }} - {{ e.muscle.muscleTargeted }}</p>
                 <dl class="exercices-card-meta">
                     <dt>Durée</dt>
                     <dd>{{ formatDuration(e.duration) }}</dd>
@@ -72,14 +75,22 @@
                 </dl>
                 @if (isLoggedIn) {
                 <div class="exercices-card-actions">
+                    @if (isFavorite(e.id)) {
+                    <button type="button" (click)="removeFromFavorites(e)" [disabled]="removingFavoriteId === e.id"
+                        class="exercices-fav-btn exercices-fav-btn-remove">
+                        {{ removingFavoriteId === e.id ? '…' : 'Retirer des favoris' }}
+                    </button>
+                    } @else {
                     <button type="button" (click)="addToFavorites(e)" [disabled]="addingFavoriteId === e.id"
                         class="exercices-fav-btn">
                         {{ addingFavoriteId === e.id ? 'Ajout…' : '♥ Ajouter aux favoris' }}
                     </button>
+                    }
                 </div>
                 }
             </div>
             }
         </div>
+        }
     </div>
 </section>

@@ -43,22 +43,22 @@ export class UserService {
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}/api/user`);
+    return this.http.get<User[]>(`${this.baseUrl}/user`);
   }
 
   getUserById(id: string): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/api/user/${id}`);
+    return this.http.get<User>(`${this.baseUrl}/user/${id}`);
   }
 
   createUser(user: CreateUserRequest): Observable<User> {
-    return this.http.post<User>(`${this.baseUrl}/api/user`, user);
+    return this.http.post<User>(`${this.baseUrl}/user`, user);
   }
 
   updateUser(id: string, data: UpdateUserRequest): Observable<User> {
-    return this.http.put<User>(`${this.baseUrl}/api/user/${id}`, data);
+    return this.http.put<User>(`${this.baseUrl}/user/${id}`, data);
   }
 
   deleteUser(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/api/user/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/user/${id}`);
   }
 }

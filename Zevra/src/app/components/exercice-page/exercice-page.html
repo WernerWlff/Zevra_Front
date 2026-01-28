@@ -56,9 +56,8 @@
         <div class="exercices-grid">
             @for (e of filteredExercices(); track e.id) {
             <div class="exercices-card">
-                <h3 class="exercices-card-title">
-                    {{ e.type.category }} – {{ e.muscle.muscleTargeted }}
-                </h3>
+                <h3 class="exercices-card-title">{{ e.name }}</h3>
+                <p class="exercices-card-subtitle">{{ e.type?.category }} - {{ e.muscle?.muscleTargeted }}</p>
                 <dl class="exercices-card-meta">
                     <dt>Durée</dt>
                     <dd>{{ formatDuration(e.duration) }}</dd>

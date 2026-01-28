@@ -1,0 +1,124 @@
+.profile-edit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(2, 54, 24, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.profile-edit-modal {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(2, 54, 24, 0.2);
+  max-width: 28rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.profile-edit-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-taupe, #e5e7eb);
+}
+
+.profile-edit-modal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-black-forest, #022618);
+}
+
+.profile-edit-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-taupe, #6b7280);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.profile-edit-modal-close:hover {
+  color: var(--color-black-forest, #022618);
+}
+
+.profile-edit-modal-form {
+  padding: 1.5rem;
+}
+
+.profile-edit-modal-error {
+  margin: 0 0 1rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.profile-edit-modal-field {
+  margin-bottom: 1rem;
+}
+
+.profile-edit-modal-field label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-black-forest, #022618);
+  margin-bottom: 0.375rem;
+}
+
+.profile-edit-modal-field input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-taupe, #d1d5db);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.profile-edit-modal-field input:focus {
+  outline: none;
+  border-color: var(--color-seaweed, #00b295);
+  box-shadow: 0 0 0 2px rgba(0, 178, 149, 0.2);
+}
+
+.profile-edit-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-taupe, #e5e7eb);
+}
+
+.profile-edit-modal-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+}
+
+.profile-edit-modal-btn-cancel {
+  background-color: transparent;
+  color: var(--color-taupe, #6b7280);
+}
+
+.profile-edit-modal-btn-cancel:hover {
+  color: var(--color-black-forest, #022618);
+}
+
+.profile-edit-modal-btn-save {
+  background-color: var(--color-black-forest, #022618);
+  color: var(--color-ghost-white, #f8faf8);
+}
+
+.profile-edit-modal-btn-save:hover {
+  background-color: var(--color-seaweed, #00b295);
+}

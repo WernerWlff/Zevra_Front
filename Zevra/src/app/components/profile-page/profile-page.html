@@ -1,0 +1,52 @@
+@if (user) {
+<section class="profile-section">
+  <div class="profile-wrapper">
+    <div class="profile-card">
+      <h1 class="profile-title">Mon profil</h1>
+
+      @if (saving) {
+        <p class="profile-msg profile-msg-info">Enregistrement en cours…</p>
+      }
+      @if (profileSuccess) {
+        <p class="profile-msg profile-msg-success">{{ profileSuccess }}</p>
+      }
+      @if (profileError) {
+        <p class="profile-msg profile-msg-error">{{ profileError }}</p>
+      }
+
+      <dl class="profile-dl">
+        <div class="profile-row">
+          <dt class="profile-dt">Prénom</dt>
+          <dd class="profile-dd">{{ user.firstname }}</dd>
+        </div>
+        <div class="profile-row">
+          <dt class="profile-dt">Nom</dt>
+          <dd class="profile-dd">{{ user.lastname }}</dd>
+        </div>
+        <div class="profile-row">
+          <dt class="profile-dt">Nom d'utilisateur</dt>
+          <dd class="profile-dd">{{ user.username }}</dd>
+        </div>
+        <div class="profile-row">
+          <dt class="profile-dt">Email</dt>
+          <dd class="profile-dd">{{ user.email }}</dd>
+        </div>
+      </dl>
+
+      <button type="button" class="profile-edit-btn" (click)="openEditModal()">
+        Modifier mon profil
+      </button>
+    </div>
+  </div>
+</section>
+
+@if (showEditModal) {
+  <app-profile-page-edit-modal
+    [user]="user"
+    [apiError]="profileError"
+    [saving]="saving"
+    (closeModal)="closeEditModal()"
+    (save)="onSaveProfile($event)">
+  </app-profile-page-edit-modal>
+}
+}
